@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "qua-libs"
+version = "0.0.0"
+description = "A collection of examples to be used with QUA language"
+authors = ["Quantum Machines <info@quantum-machines.co>"]
+license = "BSD-3-Clause"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+qm-qua = {version = ">=1.2.0", allow-prereleases = true}
+
+[tool.poetry.dev-dependencies]
+black = "^24.3.0"
+poethepoet = "^0.10.0"
+flake8 = "^3.9.1"
+
+[tool.black]
+line-length = 120
+#force-exclude = '''Two-Flux-Tunable-Transmons/Use Case 4 - Single- and Two-Qubit State and Process Tomography/helper_functions.py'''
+#include = '(examples)/.+\.pyi?$'
+#include = '(Quantum Control Applications)/.+\.pyi?$'
+#include = '(Tutorials)/.+\.pyi?$'
+
+[tool.poe.tasks]
+format="black examples"
+check_format="black --check ."
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
